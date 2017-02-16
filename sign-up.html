@@ -3,14 +3,15 @@
 
 <head>
     <link type="text/css" rel="stylesheet" href="style.css" />
-    <title></title>
+    <title>BookKeeper</title>
 </head>
 
 <body>
     <form>
         <div style="display: inline; width: 15%; float: left;"> Username: </div>
         <div style="display:inline; width:85%; float:left;">
-            <input type="text" id='username' placeholder="5 characters or more"> </div>
+            <input type="text" id='username' placeholder="Your name">
+        </div>
         <div style="display: inline; width: 15%; float: left;"> Email: </div>
         <div style="display: inline; width: 85%; float: left;">
             <input type="Email" placeholder="yourname@email.com"> </div>
@@ -284,18 +285,33 @@
         function submitForm() {
             var usernameElement = document.getElementById("username");
             var username = usernameElement.value;
+
+            if (username.length < 5) {
+                document.getElementById("msg").innerHTML = "The supplied username is too short, try again using 5 characters or more";
+                document.getElementById("msg").style.color = red;
+            } else {
+                alert("Thank you " + username + " !");
+                document.getElementById("msg").innerHTML = "";
+            }
+
             var passwordElement = document.getElementById("password");
             var password = passwordElement.value;
+
+            if (password.length < 6) {
+                document.getElementById("msg2").innerHTML = "The supplied password is too short, try again using 6 characters or more";
+            } else {
+                alert("Thank you " + username + " !");
+                document.getElementById("msg").innerHTML = "";
+            }
+
+
             var password2Element = document.getElementById("password2");
             var password2 = password2Element.value;
             var numberElement = document.getElementById("number");
             var number = numberElement.value;
 
-            if (username.length < 5) {
-                document.getElementById("msg").innerHTML = "The supplied username is too short, try again using 5 characters or more";
-            } else if (password.length < 6) {
-                document.getElementById("msg").innerHTML = innerHTML + "The supplied password is too short, try again using 6 characters or more";
-            } else if (password !== password2) {
+
+            else if (password !== password2) {
                 document.getElementById("msg").innerHTML = innerHTML + "The first password is different to the second one, try again using the same password";
             } else if (number.length > 15) {
                 document.getElementById("msg").innerHTML = innerHTML + "The phone number you supplied is too long, try again with no more than 15 digits";
